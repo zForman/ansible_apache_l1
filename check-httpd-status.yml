@@ -1,0 +1,8 @@
+# check-httpd-status.yml
+
+---
+  - hosts: webservers
+    become: true
+    tasks:
+      - name: Check status of httpd
+        command: service httpd status

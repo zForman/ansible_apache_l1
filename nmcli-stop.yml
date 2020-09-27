@@ -1,0 +1,8 @@
+# nmcli-stop.yml
+
+---
+  - hosts: webservers
+    become: true
+    tasks:
+      - name: Disable nmcli
+        command: service NetworkManager stop

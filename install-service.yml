@@ -1,0 +1,16 @@
+# install-service.yml
+
+---
+  - hosts: webservers
+    become: true
+    tasks:
+      - name: install httpd service
+        yum:
+          name: httpd
+          state: latest
+      
+      - name: Ensure apache starts
+        service: 
+          name: httpd 
+          state: started 
+          enabled: yes
