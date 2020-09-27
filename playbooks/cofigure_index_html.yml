@@ -1,0 +1,19 @@
+# cofigure_index_html.yml
+
+---
+  - hosts: webservers
+    become: true
+
+    vars:
+      path_to_app: "/var/www/html/"
+
+    tasks:
+      - name: Create index file
+        copy:
+          dest: "{{ path_to_app }}/index.html"
+          content: "<h1>Welcome to my web server. This is my first ansible home assignment</h1>"
+        notify: restart apache
+    
+    handlers:
+      - name: restart apache
+        service: name=httpd state=restarted
