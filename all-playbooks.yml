@@ -1,0 +1,11 @@
+# all-playbooks.yml
+
+---
+  - import_playbook: update-packages.yml
+  - import_playbook: install-service.yml
+  - import_playbook: check-httpd-status.yml
+  - import_playbook: firewalld-configuration.yml
+  - import_playbook: change-ifname.yml
+  - import_playbook: nmcli-stop.yml
+  - import_playbook: cofigure_index_html.yml
+    

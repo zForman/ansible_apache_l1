@@ -1,0 +1,10 @@
+# update-packages.yml
+
+---
+  - hosts: webservers
+    become: true
+    tasks:
+      - name: Update yum packages
+        yum:
+          name: "*"
+          state: latest
