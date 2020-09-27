@@ -3,11 +3,13 @@
 ---
   - hosts: webservers
     become: true
-    
+    vars:
+      path_to_grab: "/etc/default/grub"
+      
     tasks:
       - name: Change the name of a network interface
         lineinfile:
-          path: /etc/default/grub
+          path: "{{ path_to_grab }}"
           regexp: ^GRUB_CMDLINE_LINUX
           line: GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevator=noop crashkernel=auto"
         notify: Generate a grub config file
