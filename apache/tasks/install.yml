@@ -1,0 +1,15 @@
+---
+  - block:
+      - name: Install {{ apache_package['RedHat'] }} service
+        yum: name={{ apache_package['RedHat'] }} state=present
+      
+      - name: Ensure {{ apache_service['RedHat'] }} starts
+        service: name={{ apache_service['RedHat'] }} state=started enabled=yes
+
+      - name: Check status of {{ apache_service['RedHat'] }}
+        service_facts:
+        register: service_state
+      - debug:
+          msg: "{{ apache_service['RedHat'] }} service is {{ service_state.ansible_facts.services['httpd.service'].state }}"
+
+    when: ansible_os_family == "RedHat"
