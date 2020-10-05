@@ -4,5 +4,9 @@
     notify: Restart service firewalld
 
   - name: Allow ftp traffic
-    firewalld: port=21/tcp permanent=true state=enabled
+    firewalld: port=21/tcp permanent=true state=enabled immediate=true
+    notify: Restart service firewalld
+
+  - name: Allow ftp traffic
+    firewalld: port=20/tcp permanent=true state=enabled immediate=true
     notify: Restart service firewalld

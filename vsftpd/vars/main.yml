@@ -1,17 +1,20 @@
 ---
 # vars file for vsftpd
 vsftpd_config:
-  anonymous_enable: "yes"
-  write_enable: "yes"
-  local_enable: "yes"
-  anon_upload_enable: "yes"
-  dirmessage_enable: "yes"
-  xferlog_enable: "yes"
-  connect_from_port_20: "yes"
+  anonymous_enable: "YES"
+  write_enable: "YES"
+  local_enable: "YES"
+  anon_upload_enable: "YES"
+  dirmessage_enable: "YES"
+  xferlog_enable: "YES"
+  connect_from_port_20: "YES"
   pam_service_name: vsftpd
-  userlist_enable: "yes"
-  listen: "yes"
-  anon_mkdir_write_enable: "yes"
+  userlist_enable: "YES"
+  listen: "YES"
+  # anon_mkdir_write_enable: "YES"
 
 vsftpd_config_file: /etc/vsftpd/vsftpd.conf
-  
+
+
+vsftpd_package:
+  RedHat: vsftpd
