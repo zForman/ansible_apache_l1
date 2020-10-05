@@ -1,36 +1,9 @@
 ---
-# tasks file for apache
-  - name: "For RedHat OS Family"
-    block:
-      - name: Update yum packages
-        yum: name="*" state=latest
+  - name: Install Apache
+    include_tasks: install.yml
 
-      - name: Install {{ apache_package['RedHat'] }} service
-        yum: name={{ apache_package['RedHat'] }} state=present
-        
-      - name: Ensure {{ apache_service['RedHat'] }} starts
-        service: name={{ apache_service['RedHat'] }} state=started enabled=yes
+  - name: Configure firewalld
+    include_tasks: firewalld.yml
 
-      - name: Check status of {{ apache_service['RedHat'] }}
-        service_facts:
-        register: service_state
-      - debug:
-          msg: "{{ apache_service['RedHat'] }} service is {{ service_state.ansible_facts.services['httpd.service'].state }}"
-              
-      - name: Run firewalld service
-        service: name=firewalld state=started enabled=yes
-        notify: Restart service firewalld
-
-      - name: Allow web traffic
-        firewalld: service=http permanent=true state=enabled
-        notify: Restart service firewalld
-    
-      - name: Create index file
-        copy:
-          dest: "{{ apache_data_directory['RedHat'] }}/index.html"
-          content: "<h1>Welcome to my web server. This is my first ansible home assignment</h1>"
-        notify: Restart service {{ apache_service['RedHat'] }}
-      - debug:
-          msg: "{{ apache_data_directory['RedHat'] }}"
-
-    when: ansible_os_family == "RedHat"
+  - name: Create initial index.html
+    include_tasks: initial-page.yml

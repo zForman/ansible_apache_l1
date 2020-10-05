@@ -1,0 +1,10 @@
+---
+  - block:
+    - name: Run firewalld service
+      service: name=firewalld state=started enabled=yes
+      notify: Restart service firewalld
+
+    - name: Allow web traffic
+      firewalld: service=http permanent=true state=enabled
+      notify: Restart service firewalld
+    when: ansible_os_family == "RedHat"

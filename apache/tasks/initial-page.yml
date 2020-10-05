@@ -1,0 +1,6 @@
+---
+  - name: Create index file
+    copy:
+      dest: "{{ apache_data_directory['RedHat'] }}/index.html"
+      content: "<h1>Welcome to my web server. This is my first ansible home assignment</h1>"
+    notify: Restart service {{ apache_service['RedHat'] }}
