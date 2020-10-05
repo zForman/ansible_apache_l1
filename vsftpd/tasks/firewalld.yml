@@ -1,0 +1,8 @@
+---
+  - name: Run firewalld service
+    service: name=firewalld state=started enabled=yes
+    notify: Restart service firewalld
+
+  - name: Allow ftp traffic
+    firewalld: port=21/tcp permanent=true state=enabled
+    notify: Restart service firewalld

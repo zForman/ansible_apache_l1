@@ -1,0 +1,17 @@
+---
+# vars file for vsftpd
+vsftpd_config:
+  anonymous_enable: "yes"
+  write_enable: "yes"
+  local_enable: "yes"
+  anon_upload_enable: "yes"
+  dirmessage_enable: "yes"
+  xferlog_enable: "yes"
+  connect_from_port_20: "yes"
+  pam_service_name: vsftpd
+  userlist_enable: "yes"
+  listen: "yes"
+  anon_mkdir_write_enable: "yes"
+
+vsftpd_config_file: /etc/vsftpd/vsftpd.conf
+  

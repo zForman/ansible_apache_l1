@@ -1,0 +1,9 @@
+---
+  - name: Install vsftpd
+    include_tasks: install.yml
+
+  - name: Configure firewalld
+    include_tasks: firewalld.yml
+
+  - name: Change file ownership, group and permissions
+    include_tasks: selinux.yml

@@ -1,19 +1,14 @@
 # all-playbooks.yml
 
 ---
-  - name: install apache
-    hosts: webservers
+  - name: install apache and ftp
+  # - name: install apache and ftp
+    # hosts: webservers
+    hosts: node1
     become: true
     # become_method: sudo
 
     roles:
-      - { role: apache }
-
-  # - import_playbook: ./playbooks/update-packages.yml
-  # - import_playbook: ./playbooks/install-service.yml
-  # - import_playbook: ./playbooks/check-httpd-status.yml
-  # - import_playbook: ./playbooks/firewalld-configuration.yml
-  # - import_playbook: ./playbooks/change-ifname.yml
-  # - import_playbook: ./playbooks/nmcli-stop.yml
-  # - import_playbook: ./playbooks/cofigure_index_html.yml
+      # - apache
+      - vsftpd
     
