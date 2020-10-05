@@ -5,14 +5,12 @@
     become: true
     tasks:
       - name: Stop service httpd
-        service:
-          name: httpd
-          state: stopped
+        service: name=httpd state=stopped
+        # when: false
       
       - name: Remove service httpd
-        yum:
-          name: httpd
-          state: absent
+        yum: name=httpd state=absent
+        # when: false
 
       - name: Firewalld remove httpd service
         command: firewall-cmd --permanent --zone=public --remove-service=http
@@ -22,27 +20,10 @@
         command: firewall-cmd --permanent --zone=public --remove-port=80/tcp
         notify: Reload service firewalld
 
-      # - name: Firewalld remove httpd service
-      #   firewalld:
-      #     zone: public
-      #     service: http
-      #     state: disabled
-      #   notify: Reload service firewalld
-      
-      # - name: Firewalld remove port 80
-      #   firewalld:
-      #     zone: public
-      #     port: 80/tcp
-      #     state: disabled
-      #   notify: Reload service firewalld
 
       - name: Remove index.html
-        file:
-          path: /var/www/html/index.html
-          state: absent
+        file: path=/var/www/html/index.html state=absent
     
     handlers: 
       - name: Reload service firewalld
-        service:
-          name: firewalld
-          state: restarted
+        service: name=firewalld state=restarted

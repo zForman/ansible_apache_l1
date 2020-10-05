@@ -1,0 +1,10 @@
+---
+# vars file for apache
+  apache_package:
+    RedHat: httpd
+
+  apache_service:
+    RedHat: httpd
+
+  apache_data_directory:
+    RedHat: /var/www/html/
