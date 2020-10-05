@@ -1,0 +1,22 @@
+---
+  - name: Change file ownership, group and permissions
+    file:
+      path: /var/ftp/pub
+      owner: ftp
+      group: ftp
+      mode: '0775'
+
+  - name: Enable SELinux
+    ansible.posix.selinux:
+      policy: targeted
+      state: enforcing  
+    
+  - sefcontext:
+      target: '/var/ftp/pub(/.*)?'
+      setype: public_content_rw_t
+      state: present          
+
+  - name: Set the SELinux allow_ftpd_anon_write boolean to on
+    seboolean: name={{ item }} state=yes persistent=yes
+    with_items:
+      - allow_ftpd_anon_write
