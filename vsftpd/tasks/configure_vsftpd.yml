@@ -2,5 +2,5 @@
   template: 
     src: "vsftpd_config.j2" 
     dest: "{{ vsftpd_config_file }}"
-    mode: "0744"
+    mode: "0777"
   notify: Restart service vsftpd

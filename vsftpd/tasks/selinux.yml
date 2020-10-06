@@ -12,7 +12,7 @@
       state: enforcing  
     
   - sefcontext:
-      target: '/var/ftp/pub(/.*)?'
+      target: '/var/ftp/pub'
       setype: public_content_rw_t
       state: present          
 
