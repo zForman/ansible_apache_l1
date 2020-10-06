@@ -1,8 +1,16 @@
 ---
 # vars file for vsftpd
 vsftpd_config:
+  # anonymous_enable: "YES"
+  # local_enable: "NO"
+  # anon_root: /var/ftp
+  # no_anon_password: "YES"
+  # hide_ids: "YES"
+  # pasv_min_port: 40000
+  # pasv_max_port: 50000
+
   anonymous_enable: "YES"
-  write_enable: "YES"
+  write_enable: "NO"
   local_enable: "YES"
   anon_upload_enable: "YES"
   dirmessage_enable: "YES"
@@ -11,6 +19,8 @@ vsftpd_config:
   pam_service_name: vsftpd
   userlist_enable: "YES"
   listen: "YES"
+  anon_root: /var/ftp
+  no_anon_password: "YES"
   # anon_mkdir_write_enable: "YES"
 
 vsftpd_config_file: /etc/vsftpd/vsftpd.conf
