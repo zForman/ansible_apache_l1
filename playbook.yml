@@ -2,7 +2,7 @@
 
 ---
   - name: install apache and ftp
-    # hosts: webservers
+    hosts: webservers
     become: true
     become_method: sudo
 
