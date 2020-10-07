@@ -5,11 +5,9 @@
     hosts: webservers
     become: true
     become_method: sudo
-
-    pre_tasks:
-      collections:
-        - name: ansible.posix
-
+    collections: 
+    - ansible.posix
+    
     roles:
       - apache
       - vsftpd
