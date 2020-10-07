@@ -1,4 +1,7 @@
 ---
+  collections: 
+    - ansible.posix
+    
   - name: Change file ownership, group and permissions
     file:
       path: /var/ftp/pub
