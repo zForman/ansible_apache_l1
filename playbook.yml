@@ -6,7 +6,7 @@
     become: true
     become_method: sudo
 
-    collections:
+    collections: 
     - ansible.posix.selinux
     
     roles:
