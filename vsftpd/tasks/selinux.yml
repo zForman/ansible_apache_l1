@@ -1,7 +1,4 @@
----
-  collections: 
-    - ansible.posix.selinux
-    
+---    
   - name: Change file ownership, group and permissions
     file:
       path: /var/ftp/pub
@@ -9,10 +6,13 @@
       group: ftp
       mode: '0775'
 
+  # - name: Install collections
+  #   shell: ansible-galaxy collection install ansible.posix
+
   - name: Enable SELinux
-    ansible.posix.selinux:
+    selinux:
       policy: targeted
-      state: enforcing  
+      state: enforcing
     
   - sefcontext:
       target: '/var/ftp/pub'

@@ -2,7 +2,7 @@
   - name: Install vsftpd
     include_tasks: install.yml
 
-  - name: Install vsftpd
+  - name: Configure vsftpd
     include_tasks: configure_vsftpd.yml
 
   - name: Configure firewalld
