@@ -5,10 +5,11 @@
     hosts: webservers
     become: true
     become_method: sudo
+
     collections: 
     - ansible.posix.selinux
     
     roles:
-      - apache
-      - vsftpd
+    - apache
+    - vsftpd
     
